@@ -1,0 +1,304 @@
+Selenium tool
+---------------
+selenium is an open source automation testing tool and it is the suite of tool which can automate many web browsers
+
+locators:the locators which is identify the exact location of the component of the web operations such as click, typing by using selenium
+there are different types of locators uses by selenium to identify the html component to perform certain operations on the html web pages
+ID
+Xpath //tagname(@attribute='value')
+css selector(tagname.classname) or tagname(attribute='value')=input(placeholder=username)
+name
+class name
+tag name
+link text
+partial link text
+
+(//a[@value='MAA'])[2]
+
+css selector=#name(attribute)
+
+to convert class to css then put .class  and if their is a space then remove the space then place a .
+to convert id to css then put #id
+
+synchronisation
+----------------
+implicit wait
+explicit wait
+thread.sleep
+fluent wait
+
+in implicit wait the implicit function is applied for each and every line and its a time consuming process and the thing is we need to write only one line of code
+in the case of explicit wait the waiting mechanism can be only applied for whereever we written a code their only it is applicable and the disadvantage is we to write a 
+multiple lines of codes to run the program such as WebDriverWait a=new WebDriverWait(driver,5);---->a.until(ExpectedConditions.visibilityofelementslocatedBy(locator));
+
+
+actions
+------------
+the mouse actions--->how to interact mouse pointer using selenium
+how to single click on element
+how to double click on element
+how to move mouse pointer on element
+drag and dropping the element 
+
+frames---->
+what is frame
+how to use framework with selenium
+what are different types of frames
+how to interact with frames 
+
+//a[normalize-space()='mentor@rahulshettyacademy.com']
+
+
+
+driver.manage().time().implecitlywait(5,upto.SCEONDS); implicit function
+
+WebDriverWait a=new WebDriverWait();
+a.until(ExpectedConditions.ValueoftheElementBylocator(locator)); explicit function
+
+Actions a =new Actions();
+WebElement move=driver.findElement(By.csslocator());
+a.moveToElement(move).sendkeys("hello").doubleClick().keyDown(key.SHIFT).perform().built();
+a.moveToElement(move).contextclick().perform().build();
+
+frames concept
+-----------------
+Actions a=new Actions(driver);
+System.out.println(driver.findElement(By.tagName("iframe").size());
+driver.draganddrop(webelement source, webelement target);
+webelement source=driver.findelement(By.id());
+webElement target =driver.findElement(By.id());
+driver.switchto.defaultcontent();
+
+set <String> windows=driver.getWindowhandles();
+Java.Util Iterator<String>it=windows.iterator();
+String parentID=it.next();
+String childID-=it.next();
+driver.switchto.window(childID);
+driver.switchto.window(parentID);
+driver.findElement(By.cssSelector()).sendkeys("hello chetan");
+
+WebDriver driver=new ChromeDriver();
+driver.get();
+System.out.println(driver.getText());
+
+Chromeoptions options =new Chromeoptions();
+options.setAssuresecurecert(true);
+WebDriver driver=new Chromedriver(options);
+
+Proxy proxy=new Proxy();
+proxy.setHTTPproxy(ip address);
+options.setCapability("proxy",proxy);
+
+Chromeoptions options=new Chromeoptions();
+options.setExperimentalOption("exclude-switches",Arrays.asList("disable-popup-blocking"));
+
+network-->XHR---->if values of XHR is 300 or below 300 then links are working and if the values of XHR is 400 or more 
+then that like 500 or 600 then value of XHR links are broken
+
+different technologies      description
+-----------------------  -------------------   
+TestNG                    it is used for unit testing
+data driven testing       it is for to drive the data for frameworks
+reports                   used for generates the reports for frameworks
+Maven                     build management tool
+Jenkins                   continous integration
+log4j                     to generate log frameworks using different logs
+page object mechanism     to generate data patterns for frameworks
+
+Selenium tool             my using TestNG,data driven testing, maven, jenkins
+                          reports, log4j, page object mechanism we can able
+                          to create the one single framework and to generate
+                          the tests using these technologies 
+
+testNG annotations
+--------------------
+@Test is the test case for every methods
+@Beforetest, @Aftertest
+@BeforeSuite, @AfterSuite
+@BeforeMethod, @AfterMethod
+
+@Test(group={"Smoke"}) so such kind of test cases(methods) only will execute
+@Test(dependsOnMethods={""})
+@Test(enabled=false)
+@Test(enabled=true)
+
+in TestNG.xml file---> <parameter name="URL" value="universalacademy.com">
+in class file---->@Test Parameters({"URL"})
+public void display(String urltext){
+
+System.out.println(urltext);
+}
+
+Maven project process:
+-------------------------
+first install the maven and the process similar to java
+cmd-->mvn --version
+
+insert the dependencies such as appium, restassure, selenium in pom.xml
+insert maven surefire plugin above <dependencies> tag in pom.xml file
+
+maven commandands in cmd---->mvn clean(which will clean the project)
+mvn complile(which will tells is their any error and indicates success if their is no error)
+mvn test(which will test the project and the its starts to compile)
+
+maven-java/pom.xml
+<profiles>
+<profile>
+<id>regression</id>
+
+<build>
+
+</build>
+</profile>
+</profiles>
+
+mvn -Pregression
+
+mvn -Psmoke
+
+
+log4j apache download
+-------------------------
+where to log?<patterns>
+how to log?----<appenders> ----><console>
+what to log?<errors>
+
+
+commons.io dependency for screenshot and also create class name public class Listeners implements ITestListeners
+resources dependency for testng
+
+selenium grid
+------------------
+Hub-->
+session map-->client(router,distributer)--->host(chrome, firefox, IE-->which are search engines which will run test cases
+depending upon ids and urls got from distributer)
+session map--->IDs and URLs
+
+Hub--->session map, client, router, distributer, new session que, event bus, host
+
+commandprompt codes:
+
+cd path 
+path java -jar selenium-server-4.1.2.jar hub
+path java -jar selenium-server-4.1.2.jar node --detect-drivers true
+path java -jar selenium-server-4.1.2.jar node --detect-drivers true --publish-events tcp://4544 --subscribe-events tcp://5454545
+
+landingpage l=new landingpage(driver);
+if(l.getpopupsize().size()>0){
+l.getpopup().click();}
+l.getlogin().click();
+
+loginpage lg=new loginpage(driver);
+lg.getEmail().sendkeys(arg1);
+lg.getPassword().sendkeys(arg2)'
+lg.getLogin().click();
+
+portalhomepage p=new portalhomepage(driver);
+Assert.assertTrue(p.getSearchbox().isDisplaced());
+
+
+
+file.feature
+--------------
+Feature:
+Scenario Outline:
+Given 
+When 
+Then
+And
+
+Examples:
+username   |password |
+jksjda     |jdfkj    |
+
+to run a cucumber feature file in testng mode then first take cucumber testng dependency and add it in
+cucumbertestng.xml file and then use extends keyword in the future class use
+public class Testrunner extends AbstractTestNGCucumberTests{}
+ 
+to get AbstractTestNGcucumberTest then search a cucumber jvm website
+
+Git
+---------
+git is a free and opensource version control distributed system with capable of handling from small to 
+very large projects with speed high accuracy.
+
+install Github
+stash(git add *)->commit->Github repository.
+
+
+command lines for git
+------------------------
+git config --global.user "chetu1993"
+
+cd path of the folder gitfolder 
+path git init
+
+git add *
+git status
+git commit -m "first commit"
+
+git remote add origin https://jdkjdkjskjkfjs.git
+git push origin master
+
+git checkout -b(branch name) develop 
+git branch
+git add *
+git status
+git commit -m "hello"
+
+git checkout -b develop (which should need to create need to create new architect branch)
+git checkout develop(use this architect already created)
+
+git branch -d (branchname)
+git merge develop
+git branch
+
+
+saucelabs
+-----------
+
+public static final string USER_NAME="";
+public static final string ACCESS_NAME="";
+public static final string URL="http://"+USER_NAME+":"+ACCESS_NAME+"@ondemand.saucelabs.com:80/wd/hub";
+
+DesiredCapabilities cap=DesiredCapabilities.chrome();
+cap.setCapability("platform","windows 7");
+cap.setCapability("version", "100");
+WebDriver driver=new RemoteWebDriver(new URL(URL),cap);
+driver.get("https://google.com");
+System.out.println(driver.getTitle());
+
+auto pop-up windows
+--------------------
+
+driver.get("https://admin:admin@the-internet.herokuapp.com/");
+driver.findElement(By.linktext("Basic Auth")).click();
+
+Bugzilla->defect management tool
+
+
+autoIT components
+bugzilla tool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
